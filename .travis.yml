@@ -1,14 +1,9 @@
 language: node_js
 node_js:
-- 8.9.0
+- 10.10.0
 dist: trusty
 git:
   depth: false
-branches:
-  only:
-  - develop
-  - "/^feature\\/.*$/"
-  - "/^fix\\/.*$/"
 jobs:
   include:
     - stage: "Fundamental-react: Lint"
@@ -18,7 +13,10 @@ deploy:
   script: build/public_rc.sh
   on:
     branch: master
+  skip_cleanup: true
 - provider: script
   script: build/publish.sh
   on:
+    branch: master
     tags: /^v\d+\.\d+\.\d+$/
+  skip_cleanup: true
