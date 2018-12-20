@@ -13,8 +13,10 @@ deploy:
   script: build/public_rc.sh
   on:
     branch: master
+  skip_cleanup: true
 - provider: script
   script: build/publish.sh
   on:
     branch: master
     tags: /^v\d+\.\d+\.\d+$/
+  skip_cleanup: true
