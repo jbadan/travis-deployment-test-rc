@@ -4,10 +4,6 @@ node_js:
 dist: trusty
 git:
   depth: false
-branches:
-  only:
-    develop
-    master
 jobs:
   include:
     - stage: "Fundamental-react: Lint"
