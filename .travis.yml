@@ -16,4 +16,5 @@ deploy:
 - provider: script
   script: build/publish.sh
   on:
+    branch: master
     tags: /^v\d+\.\d+\.\d+$/
