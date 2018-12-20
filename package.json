@@ -4,6 +4,7 @@
   "description": "This library is strictly to test deployment/releases using TravisCI.",
   "main": "index.js",
   "scripts": {
+    "build": "echo \"This could be a build huh\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
