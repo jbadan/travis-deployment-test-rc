@@ -4,19 +4,23 @@ node_js:
 dist: trusty
 git:
   depth: false
+branches:
+  only:
+  - develop
+  - "/^feature\\/.*$/"
 jobs:
   include:
-    - stage: "Fundamental-react: Lint"
-      script: npm run build
+    - stage: "Fundamental-react build"
+      name: "Unit tests"
+      script: "./ci-scripts/unit-tests.sh"
+notifications:
+  email:
+    on_failure: always
+    on_success: change
+before_deploy:
+  - npm run build
 deploy:
-- provider: script
-  script: build/public_rc.sh
+  provider: script
+  script: bash ./ci-scripts/publish.sh $TRAVIS_BRANCH $TRAVIS_BUILD_NUMBER
   on:
     branch: master
-  skip_cleanup: true
-- provider: script
-  script: build/publish.sh
-  on:
-    branch: master
-    tags: /^v\d+\.\d+\.\d+$/
-  skip_cleanup: true
