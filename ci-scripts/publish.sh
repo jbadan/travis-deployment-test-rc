@@ -9,7 +9,7 @@ npm run std-version
 
 npm whoami
 
-echo -e "$NPM_USERNAME\n$NPM_PASSWORD\n$NPM_EMAIL" | npm login
+echo -e "jbadan\n$NPM_PASSWORD\njenna.badanowski@gmail.com" | npm login
 
 # npm adduser --registry=https://registry.npmjs.org/ <<!
 # $NPM_USERNAME
