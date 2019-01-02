@@ -7,15 +7,15 @@ npm install
 
 npm run std-version
 
+echo $NPM_USERNAME
+echo $NPM_PASSWORD
+echo $NPM_EMAIL
+
 npm adduser --registry=https://registry.npmjs.org/ << !
 $NPM_USERNAME
 $NPM_PASSWORD
 $NPM_EMAIL
 !
-
-echo $NPM_EMAIL
-
-echo "hererewfwrogfwrfwefwe"
 
 git push --tags origin $TRAVIS_BRANCH
 
