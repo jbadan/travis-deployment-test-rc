@@ -3,7 +3,8 @@
 set -o nounset
 set -o errexit
 
-npm login --always-auth << !
+npm config set registry https://registry.npmjs.org/
+npm login << !
 ${NPM_USERNAME}
 ${NPM_PASSWORD}
 ${NPM_EMAIL}
