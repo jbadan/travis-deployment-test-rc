@@ -18,7 +18,7 @@
     "url": "https://github.com/jeffredodd/travis-deployment-test/issues"
   },
   "homepage": "https://github.com/jeffredodd/travis-deployment-test#readme",
-  "dependencies": {
+  "devDependencies": {
     "standard-version": "^4.4.0"
   }
 }
