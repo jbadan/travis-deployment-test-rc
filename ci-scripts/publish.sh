@@ -3,7 +3,7 @@ git config --global user.name "jbadan"
 
 # update the package verion and commit to the git repository
 
-echo "made it here"
+npm install
 
 npm run std-version
 
