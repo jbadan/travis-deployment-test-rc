@@ -8,7 +8,7 @@ jobs:
   include:
     - stage: "Fundamental-react build"
       name: "Unit tests"
-      script: "./ci-scripts/unit-tests.sh"
+      script: bash ./ci-scripts/unit-tests.sh
 notifications:
   email:
     on_failure: always
