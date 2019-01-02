@@ -8,6 +8,7 @@ branches:
   only:
   - develop
   - "/^feature\\/.*$/"
+  - master
 jobs:
   include:
     - stage: "Fundamental-react build"
