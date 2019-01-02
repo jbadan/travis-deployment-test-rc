@@ -7,11 +7,9 @@ npm install
 
 npm run std-version
 
-echo $NPM_USERNAME
-echo $NPM_PASSWORD
-echo $NPM_EMAIL
+npm whoami
 
-npm adduser --registry=https://registry.npmjs.org/ << !
+npm adduser --registry=https://registry.npmjs.org/ <<!
 $NPM_USERNAME
 $NPM_PASSWORD
 $NPM_EMAIL
