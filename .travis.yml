@@ -14,12 +14,15 @@ notifications:
     on_failure: always
     on_success: change
 before_deploy:
+- npm i
 - npm run build
+- npm run std-version
+- git push --tags origin $TRAVIS_BRANCH
 deploy:
-  provider: script
-  script: bash ./ci-scripts/publish.sh $TRAVIS_BRANCH $TRAVIS_BUILD_NUMBER
+  provider: npm
   on:
     branch: master
+  email: "jenna.badanowski@gmail.com"
   api:
     secure: AKVw7lhdfpo8dj0gC0E8vY3yrcparxSI/Y+g2hCHIseNScpsLbFYFRVK7UOMndIlgyrpm84hz/eQ6uP9lGk9nKLnhRZDt+b7ISgQdky119JGidHZjT4WLY5eSqpVtvBrWZt66nN7vDJM/D9b3O7aTCmxVyV702tzwVEC3Iy9MM/rntMLyqicxZzO3JLEchCU6i6WQQSOK/lHyiQygESsChSd3e9hqoE4OZsQGhn3QvkYSGCd4dZuvPYqMze4ea1VsEzvXp4W45STpefDB3qiek1JHiCClMS4iXI9gHmpu7+tOyg8lBSN0B6JHZ3o6a6ouY5EPI9XriHrY0rMTQwSOSMM5YbJdg88tnaVXWYOyoJx6SWMTtTsJ7BFYZc77+8Qk7u5g/oh6CJ5tVQ61o4hkos7TzhtkQz+WLgql5AGEkT4cgNZno9dHpyD2WBjE8fprsNoGWjIQDoPkSXOByLHAqLisf6f3uZ5iX9wT/USSqCDh/trgB0UCXz8LGgh6HGzH16q3XYN9qwK23HnxbhoZ3PQQxKKbBss3aphC4OuUUVjsJu5bGQZ1heoHfRdhH3l4Sp38KcWTzMb2BkPvZBGKbOOrbEQcltnByrDf4hAbtkyql4amoRYUHfmWh2J700lRh2i4oP94BMQzRjQETOtz0zNUjG20EIT4Vv/4SRhW1c=
   api_key:
