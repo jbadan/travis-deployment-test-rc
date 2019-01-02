@@ -13,6 +13,10 @@ $NPM_PASSWORD
 $NPM_EMAIL
 !
 
+echo $NPM_EMAIL
+
+echo "hererewfwrogfwrfwefwe"
+
 git push --tags origin $TRAVIS_BRANCH
 
 npm publish
