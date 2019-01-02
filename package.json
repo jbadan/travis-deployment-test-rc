@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "echo \"This could be a build huh\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "std-version": "standard-version -m \"chore(release): version %s build ${TRAVIS_BUILD_NUMBER} [ci skip]\""
   },
   "repository": {
     "type": "git",
