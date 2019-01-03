@@ -1,6 +1,6 @@
 {
   "name": "travis-deployment-test",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "This library is strictly to test deployment/releases using TravisCI.",
   "main": "index.js",
   "scripts": {
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jeffredodd/travis-deployment-test.git"
+    "url": "git+https://github.com/jbadan/travis-deployment-test.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jeffredodd/travis-deployment-test/issues"
+    "url": "https://github.com/jbadan/travis-deployment-test/issues"
   },
-  "homepage": "https://github.com/jeffredodd/travis-deployment-test#readme",
+  "homepage": "https://github.com/jbadan/travis-deployment-test#readme",
   "devDependencies": {
     "standard-version": "^4.4.0"
   }
