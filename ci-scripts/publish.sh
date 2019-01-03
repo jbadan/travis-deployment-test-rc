@@ -1,6 +1,7 @@
 # function to make a commit on a branch in a Travis CI build
 # be sure to avoid creating a Travis CI fork bomb
 # see https://github.com/travis-ci/travis-ci/issues/1701
+# edited from https://gist.github.com/ddgenome/f3a60fe4c2af0cbe758556d982fbeea9
 function travis-branch-commit() {
     local head_ref branch_ref
     head_ref=$(git rev-parse HEAD)
@@ -60,13 +61,6 @@ npm run std-version
 
 travis-branch-commit
 
-echo "//registry.npmjs.org/:_password=${NPM_PASSWORD}" > ~/.npmrc
-echo "//registry.npmjs.org/:_authToken=${AUTH_TOKEN}" >> ~/.npmrc
-echo "//registry.npmjs.org/:username=jbadan" >> ~/.npmrc
-echo "//registry.npmjs.org/:email=jenna.badanowski@gmail.com" >> ~/.npmrc
 
-
-
-# git push "https://jbadan:${GH_TOKEN}@github.com/jbadan/travis-deployment-test.git" --tags origin ${TRAVIS_BRANCH}
 
 npm publish

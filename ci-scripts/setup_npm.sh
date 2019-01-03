@@ -3,8 +3,7 @@
 set -o nounset
 set -o errexit
 
-npm login --registry=https://registry.npmjs.org/ << !
-$NPM_USERNAME
-$NPM_PASSWORD
-$NPM_EMAIL
-!
+echo "//registry.npmjs.org/:_password=${NPM_PASSWORD}" > ~/.npmrc
+echo "//registry.npmjs.org/:_authToken=${AUTH_TOKEN}" >> ~/.npmrc
+echo "//registry.npmjs.org/:username=jbadan" >> ~/.npmrc
+echo "//registry.npmjs.org/:email=jenna.badanowski@gmail.com" >> ~/.npmrc
