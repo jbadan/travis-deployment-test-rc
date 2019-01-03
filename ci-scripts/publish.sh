@@ -14,9 +14,9 @@ echo "//registry.npmjs.org/:_authToken=${AUTH_TOKEN}" >> ~/.npmrc
 echo "//registry.npmjs.org/:username=jbadan" >> ~/.npmrc
 echo "//registry.npmjs.org/:email=jenna.badanowski@gmail.com" >> ~/.npmrc
 
-echo ${TRAVIS_BRANCH}
+git status
 
-git branch -v
+git commit -a -m "[CI SKIP]"
 
 git push "https://jbadan:${GH_TOKEN}@github.com/jbadan/travis-deployment-test.git" --tags origin ${TRAVIS_BRANCH}
 
