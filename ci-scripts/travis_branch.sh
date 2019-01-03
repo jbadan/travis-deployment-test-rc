@@ -23,10 +23,6 @@ function travis-branch-commit() {
         err "failed to checkout $TRAVIS_BRANCH"
         return 1
     fi
-    if ! git add --all .; then
-        err "failed to add modified files to git index"
-        return 1
-    fi
 
     local remote=origin
     if [[ $GH_TOKEN ]]; then

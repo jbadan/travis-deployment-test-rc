@@ -6,7 +6,7 @@ git config --global user.name "travis"
 
 git checkout master
 npm install
-#bump version in package.json, update CHANGELOG.md &  package-lock.json; git add and git commit
+# update the package verion and commit to the git repository
 npm run std-version
 
 # pushes changes to correct HEAD
