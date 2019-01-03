@@ -26,11 +26,6 @@ function travis-branch-commit() {
         err "failed to add modified files to git index"
         return 1
     fi
-    # make Travis CI skip this build
-    if ! git commit -m "Travis CI update [ci skip]"; then
-        err "failed to commit updates"
-        return 1
-    fi
 
     local remote=origin
     if [[ $GH_TOKEN ]]; then
