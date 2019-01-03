@@ -9,13 +9,13 @@ npm run std-version
 
 npm whoami
 
-echo -e "jbadan\n$NPM_PASSWORD\njenna.badanowski@gmail.com" | npm login
+# echo -e "jbadan\n$NPM_PASSWORD\njenna.badanowski@gmail.com" | npm login
 
-# npm adduser --registry=https://registry.npmjs.org/ <<!
-# $NPM_USERNAME
-# $NPM_PASSWORD
-# $NPM_EMAIL
-# !
+npm adduser --registry=https://registry.npmjs.org/ <<!
+"jbadan"
+$NPM_PASSWORD
+"jenna.badanowski@gmail.com"
+!
 
 git push --tags origin $TRAVIS_BRANCH
 
