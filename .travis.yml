@@ -14,10 +14,18 @@ notifications:
     on_failure: always
     on_success: change
 before_deploy:
+- npm install
 - npm run build
+- git config --global user.email "travis@travis-ci.org"
+- git config --global user.name "Travis CI"
+- npm run std-version
+- git push "https://jbadan:${GH_TOKEN}@github.com/jbadan/travis-deployment-test.git" --tags origin ${TRAVIS_BRANCH}
 deploy:
-  skip_cleanup: true
-  provider: script
-  script: bash ./ci-scripts/publish.sh $TRAVIS_BRANCH $TRAVIS_BUILD_NUMBER
+  provider: npm
+  email: jenna.badanowski@gmail.com
+  api_key:
+    secure: pxntPyFUyJdUWe+Gq7z2lSu/Xrzr6FAzqVyz20MRmqm6lg5jUBREWcwnOrJNbk3mapZ9QBpjLY/BbzKPfrNRzxLyhoMo3+js8fjbSCRqqPDE/kbGv8DhL0N+z+48eh+Lmvrcl0EFbnCAF9RtjUU5ix+Elmq2WUGwtx3gBs+kI6WhIM1rezNMhadPCtk6DGNH6Z74mXxWbOnqLVk4wxiU8MqUDbawv6xK5dFGPLLc+1q4qnj3+cJXaSqbhnW33nWogdak1wWqFmLSttDBP+iLCXTwJARg48OhLL+5/bkBzO6kkoU+0Hluq41VmlcCMD1LGrZJWZRLMDaCSCDxPfr21JLIKdhE9WTZ8LtkFY/YXFWGBDu8lHhjv5LzjHeKOArFCHcFo+tHA7XiiToRay8rMmWMIhakoOSiWituCtITQiE7GnMYrt+GTI6ie5hKo+Yicw8dE2k6ibxEnDfbZ0nySDSV//L7ZbdZdDeLeiiAnzBrQPzfLDnNIdRAIrrtwk/zRiD+aG2MkpG89UWlNIwcJPPA/sOD/Ha5ssXxiSxQuOlR+s7q1w33Ifpgv32PQhCqZ/Fp5YpJBRNIw5Itmi7+F3mF3liPLLXALIYv8ckRKVgDE+ePmfqqbvOqQNs/sSIkKww0JAGu8I4qWZZ5KbKjhRxDtgVZan6EHqnZQ6SM9Yo=
   on:
-    branch: master
+    tags: true
+    repo: jbadan/travis-deployment-test
+
