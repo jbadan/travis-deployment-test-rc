@@ -1,7 +1,7 @@
 git config --global user.email "travis@travis.org"
 git config --global user.name "travis"
 
-git pull
+git pull origin master
 
 # update the package verion and commit to the git repository
 
