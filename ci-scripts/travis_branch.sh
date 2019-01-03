@@ -28,7 +28,7 @@ function travis-branch-commit() {
     if [[ $GH_TOKEN ]]; then
         remote=https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG
     fi
-    if [[ $TRAVIS_BRANCH != master ]]; then
+    if [[ $TRAVIS_BRANCH != master ]] && [[ $TRAVIS_BRANCH != develop ]]; then
         msg "not pushing updates to branch $TRAVIS_BRANCH"
         return 0
     fi

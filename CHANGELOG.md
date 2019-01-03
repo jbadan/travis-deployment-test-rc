@@ -2,8 +2,42 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.22.1-rc.0"></a>
+## [1.22.1-rc.0](https://github.com/jbadan/travis-deployment-test/compare/v1.22.0-rc.5...v1.22.1-rc.0) (2019-01-03)
+
+
+
 <a name="1.22.0"></a>
 # [1.22.0](https://github.com/jbadan/travis-deployment-test/compare/v1.21.0...v1.22.0) (2019-01-03)
+
+
+
+<a name="1.22.0-rc.5"></a>
+# [1.22.0-rc.5](https://github.com/jbadan/travis-deployment-test/compare/v1.22.0-rc.4...v1.22.0-rc.5) (2019-01-03)
+
+
+### Bug Fixes
+
+* testing merging into develop ([4c56dc3](https://github.com/jbadan/travis-deployment-test/commit/4c56dc3))
+
+
+
+<a name="1.22.0-rc.4"></a>
+# [1.22.0-rc.4](https://github.com/jbadan/travis-deployment-test/compare/v1.22.0-rc.3...v1.22.0-rc.4) (2019-01-03)
+
+
+
+<a name="1.22.0-rc.3"></a>
+# [1.22.0-rc.3](https://github.com/jbadan/travis-deployment-test/compare/v1.21.0...v1.22.0-rc.3) (2019-01-03)
+
+
+### Bug Fixes
+
+* test develop branch ([5adb3de](https://github.com/jbadan/travis-deployment-test/commit/5adb3de))
+
+<a name="1.22.0"></a>
+# [1.22.0](https://github.com/jbadan/travis-deployment-test/compare/v1.21.0...v1.22.0) (2019-01-03)
+
 
 
 ### Features
