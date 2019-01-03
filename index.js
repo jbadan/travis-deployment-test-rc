@@ -1,6 +1,6 @@
 function helloWorld() {
     console.log('hello world');
-    console.log('testing');
+    console.log('test');
 }
 
 module.export = helloWorld;
