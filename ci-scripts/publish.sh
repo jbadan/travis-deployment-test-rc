@@ -12,12 +12,10 @@ echo "//registry.npmjs.org/:_authToken=${AUTH_TOKEN}" >> ~/.npmrc
 echo "//registry.npmjs.org/:username=jbadan" >> ~/.npmrc
 echo "//registry.npmjs.org/:email=jenna.badanowski@gmail.com" >> ~/.npmrc
 
-git status
+git branch -v
 
-git rev-parse HEAD
+git log
 
-git show-ref --head
-
-git push --force "https://jbadan:${GH_TOKEN}@github.com/jbadan/travis-deployment-test.git" --tags origin ${TRAVIS_BRANCH}
+git push "https://jbadan:${GH_TOKEN}@github.com/jbadan/travis-deployment-test.git" --tags origin ${TRAVIS_BRANCH}
 
 npm publish
