@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "echo \"This could be a build huh\"",
-    "test": "echo \"testing",
+    "test": "echo \"This could be a test huh\"",
     "std-version": "standard-version -m \"chore(release): version %s build ${TRAVIS_BUILD_NUMBER} [ci skip]\""
   },
   "repository": {
