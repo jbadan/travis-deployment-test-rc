@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.26.0"></a>
+# [1.26.0](https://github.com/jbadan/travis-deployment-test/compare/v1.25.0...v1.26.0) (2019-01-04)
+
+
+### Features
+
+* wegwf ([73d0aa0](https://github.com/jbadan/travis-deployment-test/commit/73d0aa0))
+
+
+
 <a name="1.25.0"></a>
 # [1.25.0](https://github.com/jbadan/travis-deployment-test/compare/v1.24.0...v1.25.0) (2019-01-04)
 
