@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.24.0"></a>
+# [1.24.0](https://github.com/jbadan/travis-deployment-test/compare/v1.23.1-rc.0...v1.24.0) (2019-01-04)
+
+
+### Bug Fixes
+
+* efwgwrgred ([f91039a](https://github.com/jbadan/travis-deployment-test/commit/f91039a))
+* qfwergwgwr ([1c82181](https://github.com/jbadan/travis-deployment-test/commit/1c82181))
+
+
+### Features
+
+* merge develop into master ([fdc3540](https://github.com/jbadan/travis-deployment-test/commit/fdc3540))
+
+
+
+<a name="1.23.0"></a>
+# [1.23.0](https://github.com/jbadan/travis-deployment-test/compare/v1.23.0-rc.2...v1.23.0) (2019-01-04)
+
+
+### Features
+
+* merge develop into master (attempt 2) ([25f59a2](https://github.com/jbadan/travis-deployment-test/commit/25f59a2))
+
+
 
 <a name="1.23.1-rc.0"></a>
 ## [1.23.1-rc.0](https://github.com/jbadan/travis-deployment-test/compare/v1.23.0-rc.2...v1.23.1-rc.0) (2019-01-04)
