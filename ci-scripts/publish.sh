@@ -22,5 +22,7 @@ git checkout develop
 # git checkout master;
 # git stash pop;
 git merge master
+git commit -a -m "merge master into develop [ci skip]"
+git push
 
 npm publish
