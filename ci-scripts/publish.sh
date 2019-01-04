@@ -7,6 +7,8 @@ git config --global user.name "travis"
 git checkout master
 npm install
 # update the package verion and commit to the git repository
+
+# parse looking for rc --- run different standard version if rc is found
 npm run std-version
 
 # pushes changes to correct HEAD
