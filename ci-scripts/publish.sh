@@ -7,11 +7,22 @@ git config --global user.name "travis"
 git checkout master
 npm install
 # update the package verion and commit to the git repository
-
-# parse looking for rc --- run different standard version if rc is found
 npm run std-version
 
 # pushes changes to correct HEAD
 travis-branch-commit
+
+# commit CHANGELOG and package bump to develop branch
+# git commit -m $1
+
+# CHERRYCOMMIT=`git log -n1 | head -n1 | cut -c8-`
+# git stash;
+git checkout develop
+# git cherry-pick $CHERRYCOMMIT;
+# git checkout master;
+# git stash pop;
+git merge master
+git commit -a -m "merge master into develop [ci skip]"
+git push
 
 npm publish

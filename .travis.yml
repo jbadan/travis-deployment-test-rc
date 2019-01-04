@@ -22,8 +22,8 @@ deploy:
     on:
       branch: master
     skip_cleanup: true
-  - provider: script
-    script: bash ./ci-scripts/publish_rc.sh $TRAVIS_BRANCH $TRAVIS_BUILD_NUMBER
-    on:
-      branch: develop
-    skip_cleanup: true
+  # - provider: script
+  #   script: bash ./ci-scripts/publish_rc.sh $TRAVIS_BRANCH $TRAVIS_BUILD_NUMBER
+  #   on:
+  #     branch: develop
+  #   skip_cleanup: true

@@ -5,7 +5,7 @@ git config --global user.name "travis"
 
 git checkout develop
 npm install
-# update the package verion and commit to the git repository
+# update the package verion and commit to the develop branch
 npm run std-version -- --prerelease rc --no-verify
 
 # pushes changes to correct HEAD
