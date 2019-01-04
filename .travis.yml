@@ -9,12 +9,11 @@ jobs:
   - stage: Fundamental-react build
     name: Unit tests
     script: bash ./ci-scripts/unit-tests.sh
-# notifications:
-#   email:
-#     on_failure: always
-#     on_success: change
+notifications:
+  email:
+    on_failure: always
+    on_success: change
 before_deploy:
-- npm run build
 - bash ./ci-scripts/setup_npm.sh
 deploy:
   - provider: script
@@ -22,8 +21,3 @@ deploy:
     on:
       branch: master
     skip_cleanup: true
-  # - provider: script
-  #   script: bash ./ci-scripts/publish_rc.sh $TRAVIS_BRANCH $TRAVIS_BUILD_NUMBER
-  #   on:
-  #     branch: develop
-  #   skip_cleanup: true
