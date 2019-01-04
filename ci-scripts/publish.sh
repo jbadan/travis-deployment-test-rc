@@ -13,16 +13,13 @@ npm run std-version
 travis-branch-commit
 
 # commit CHANGELOG and package bump to develop branch
-# git commit -m $1
-
-# CHERRYCOMMIT=`git log -n1 | head -n1 | cut -c8-`
-# git stash;
 git checkout develop
-# git cherry-pick $CHERRYCOMMIT;
-# git checkout master;
-# git stash pop;
 git merge master
+
 git commit -a -m "merge master into develop [ci skip]"
-git push
+
+local remote=https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG
+
+git push --quiet --follow-tags "$remote" develop > /dev/null 2>&1;
 
 npm publish
