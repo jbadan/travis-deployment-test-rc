@@ -18,8 +18,6 @@ git merge master
 
 git commit -a -m "merge master into develop [ci skip]"
 
-local remote=https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG
-
-git push --quiet --follow-tags "$remote" develop > /dev/null 2>&1;
+git push --quiet --follow-tags "https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG" develop > /dev/null 2>&1;
 
 npm publish
