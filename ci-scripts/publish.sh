@@ -13,13 +13,14 @@ npm run std-version
 travis-branch-commit
 
 # commit CHANGELOG and package bump to develop branch
-git commit -m $1
+# git commit -m $1
 
-CHERRYCOMMIT=`git log -n1 | head -n1 | cut -c8-`
-git stash;
-git checkout develop;
-git cherry-pick $CHERRYCOMMIT;
-git checkout master;
-git stash pop;
+# CHERRYCOMMIT=`git log -n1 | head -n1 | cut -c8-`
+# git stash;
+git checkout develop
+# git cherry-pick $CHERRYCOMMIT;
+# git checkout master;
+# git stash pop;
+git merge master
 
 npm publish
