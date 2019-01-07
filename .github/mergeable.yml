@@ -1,0 +1,6 @@
+mergeable: 
+  pull_requests: 
+    title: 
+      must_include: 
+        message: "Title must have prefixes for the following: feat, fix or chore"
+        regex: ^feat|^chore|^fix
