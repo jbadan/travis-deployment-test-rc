@@ -1,6 +1,9 @@
 mergeable: 
   pull_requests: 
     title: 
-      must_include: 
+      begins_with: 
         message: "Title must have prefixes for the following: feat, fix or chore"
-        regex: ^feat|^chore|^fix
+        match: ^feat:|^chore:|^fix:/
+      must_exclude:
+        message: "Title cannot include 'BREAKING CHANGE'"
+        regex: BREAKING CHANGE
