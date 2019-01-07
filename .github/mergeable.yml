@@ -3,7 +3,7 @@ mergeable:
     title: 
       begins_with: 
         message: "Title must have prefixes for the following: feat, fix or chore"
-        match: feat:|chore:|fix:
+        match: 'feat:|chore:|fix:'
       must_exclude:
-        message: "Title cannot include 'BREAKING CHANGE'"
+        message: "Title cannot include 'BREAKING CHANGE' as this will automatically trigger a major version release"
         regex: BREAKING CHANGE
