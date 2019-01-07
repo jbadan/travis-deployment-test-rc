@@ -1,6 +1,7 @@
 mergeable:
   pull_requests:
-    # Regular expression to be tested on the title. Not mergeable when true.  
-    must_include:
-    regex: `^\\(feat\\)|^\\(fix\\)|^\\(chore\\)`
-    message: `Title must have prefixes for the following: (feat), (fix), (chore)`
+    # Regular expression to be tested on the title. Not mergeable when true.
+    title:  
+      must_include:
+        regex: `^\\(feat\\)|^\\(fix\\)|^\\(chore\\)`
+        message: `Title must have prefixes for the following: (feat), (fix), (chore)`
