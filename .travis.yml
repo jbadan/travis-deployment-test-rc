@@ -16,11 +16,12 @@ jobs:
     before_deploy:
     - bash ./ci-scripts/setup_npm.sh
     deploy:
-      - on:
-        tags: true
       - provider: script
         script: bash ./ci-scripts/publish.sh $TRAVIS_BRANCH $TRAVIS_BUILD_NUMBER
         skip_cleanup: true
+        on:
+          tags: true
+          branch: master
 notifications:
   email:
     on_failure: always
