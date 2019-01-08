@@ -12,13 +12,12 @@ jobs:
     name: Unit tests
     script: bash ./ci-scripts/unit-tests.sh
   - stage: Deploy
-    if: type != pull_request
+    if: branch = master AND type != pull_request
     before_deploy:
     - bash ./ci-scripts/setup_npm.sh
     deploy:
       - on:
         tags: true
-        branch: master
       - provider: script
         script: bash ./ci-scripts/publish.sh $TRAVIS_BRANCH $TRAVIS_BUILD_NUMBER
         skip_cleanup: true
