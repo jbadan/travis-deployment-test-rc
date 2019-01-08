@@ -1,6 +1,6 @@
 #! /bin/bash
 # npm publish for major versions
-if [ "$TRAVIS_TAG" =~ '^v[0-9]+\.[0-9]+\.[0-9]+$' ]; then
+if [ "$TRAVIS_TAG" =~ "^v[0-9]+\.[0-9]+\.[0-9]+$" ]; then
     npm publish
 else
     git config --global user.email "travis@travis.org"
