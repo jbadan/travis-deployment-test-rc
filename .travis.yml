@@ -4,6 +4,9 @@ node_js:
 dist: trusty
 git:
   depth: false
+script:
+  - npm test
+  - npm run build
 jobs:
   include:
   - stage: Fundamental-react build
