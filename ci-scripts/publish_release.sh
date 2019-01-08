@@ -25,5 +25,5 @@ hash_upstream=$(git rev-parse $git_branch@{upstream})
 
 set -o errexit
 
-npm run std-version
+npm run std-version:release
 git push --follow-tags origin
