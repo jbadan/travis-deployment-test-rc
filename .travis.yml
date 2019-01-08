@@ -8,9 +8,9 @@ script:
   - npm run build
 jobs:
   include:
-  - stage: Fundamental-react build
-    name: Unit tests
-    script: bash ./ci-scripts/unit-tests.sh
+  # - stage: Fundamental-react build
+  #   name: Unit tests
+  #   script: bash ./ci-scripts/unit-tests.sh
   - stage: Deploy
     if: branch = master AND type != pull_request OR branch =~ /^v\d+\.\d+\.\d+$/
     before_deploy:

@@ -1,7 +1,14 @@
 #! /bin/bash
-# npm publish for major versions
-if [ "$TRAVIS_TAG" =~ "^v[0-9]+\.[0-9]+\.[0-9]+$" ]; then
+
+echo "$TRAVIS_TAG"
+
+# prevent double publishing on releases
+if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_TAG" =~ "^v[0-9]+\.[0-9]+\.[0-9]+$" ]; then
+    exit 1
+# publish only on tagged release
+elif [ "$TRAVIS_BRANCH" =~ "^v[0-9]+\.[0-9]+\.[0-9]+$" ]; then
     npm publish
+# create rc and publish
 else
     git config --global user.email "travis@travis.org"
     git config --global user.name "travis"
