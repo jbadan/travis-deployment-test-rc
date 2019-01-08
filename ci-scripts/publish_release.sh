@@ -25,5 +25,5 @@ hash_upstream=$(git rev-parse $git_branch@{upstream})
 
 set -o errexit
 
-npm run std-version -- --posttag "git commit --allow-empty -m 'publish to npm'"
+npm run std-version:release
 git push --follow-tags origin
