@@ -12,7 +12,7 @@ jobs:
     name: Unit tests
     script: bash ./ci-scripts/unit-tests.sh
   - stage: Deploy
-    if: branch = master AND type != pull_request OR $TRAVIS_BRANCH =~ /^v\d+\.\d+\.\d+$/
+    if: branch = master AND type != pull_request OR branch =~ /^v\d+\.\d+\.\d+$/
     before_deploy:
     - bash ./ci-scripts/setup_npm.sh
     deploy:
