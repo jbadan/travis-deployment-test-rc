@@ -3,10 +3,10 @@
 echo "$TRAVIS_TAG"
 
 # prevent double publishing on releases
-if [ $TRAVIS_BRANCH = "master" ] && [ $TRAVIS_TAG =~ "^v[0-9]+\.[0-9]+\.[0-9]+$" ]; then
+if [ $TRAVIS_BRANCH = "master" ] && [ $TRAVIS_TAG =~ /^v[0-9]+\.[0-9]+\.[0-9]+$/ ]; then
     exit 1
 # publish only on tagged release
-elif [ $TRAVIS_BRANCH =~ "^v[0-9]+\.[0-9]+\.[0-9]+$" ]; then
+elif [ $TRAVIS_BRANCH =~ /^v[0-9]+\.[0-9]+\.[0-9]+$/ ]; then
     npm publish
 # create rc and publish
 else
