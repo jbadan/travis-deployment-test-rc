@@ -5,28 +5,21 @@ dist: trusty
 git:
   depth: false
 script:
-  - npm test
   - npm run build
 jobs:
   include:
   - stage: Fundamental-react build
     name: Unit tests
     script: bash ./ci-scripts/unit-tests.sh
-  - stage: Deploy RC
+  - stage: Deploy
     if: branch = master AND type != pull_request
     before_deploy:
     - bash ./ci-scripts/setup_npm.sh
     deploy:
+      - on:
+        tags: true
       - provider: script
         script: bash ./ci-scripts/publish.sh $TRAVIS_BRANCH $TRAVIS_BUILD_NUMBER
-        skip_cleanup: true
-  - stage: Deploy Major Version
-    if: branch = master AND type != pull_request AND "$TRAVIS_TAG" ~= ^v\d+\.\d+\.\d+$
-    before_deploy:
-    - bash ./ci-scripts/setup_npm.sh
-    deploy:
-      - provider: script
-        script: npm publish
         skip_cleanup: true
 notifications:
   email:
