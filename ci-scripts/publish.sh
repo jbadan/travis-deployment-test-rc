@@ -1,14 +1,12 @@
 #! /bin/bash
 
-echo "this is the tag: $TRAVIS_TAG"
-echo "this is the branch: $TRAVIS_BRANCH"
-
-# publish only on tagged release
-if [[ "$TRAVIS_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+echo "travis event type: $TRAVIS_EVENT_TYPE"
+# publish tagged releases
+if [[ "$TRAVIS_BRANCH" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
     npm publish
      exit 1
-# create rc and publish
-else
+# bump rc and publish
+elif [[ "$TRAVIS_BRANCH" = "master" ]]; then
     git config --global user.email "travis@travis.org"
     git config --global user.name "travis"
 
