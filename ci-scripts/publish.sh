@@ -1,14 +1,10 @@
 #! /bin/bash
 
-echo "TRAVIS_COMMIT_MESSAGE $TRAVIS_COMMIT_MESSAGE"
-
-
 # publish tagged releases
 if [[ "$TRAVIS_COMMIT_MESSAGE" =~ .*[0-9]+\.[0-9]+\.[0-9]+$.* ]]; then
     npm publish
-     exit 1
 # bump rc and publish
-elif [[ "$TRAVIS_BRANCH" = "master" ]]; then
+else
     git config --global user.email "travis@travis.org"
     git config --global user.name "travis"
 
