@@ -2,6 +2,10 @@
 
 echo "travis event type: $TRAVIS_EVENT_TYPE"
 
+echo "travis commit $TRAVIS_COMMIT"
+
+echo "TRAVIS_COMMIT_MESSAGE $TRAVIS_COMMIT_MESSAGE"
+
 echo $(git ls-remote origin | grep "$TRAVIS_COMMIT\s\+refs/heads/release$")
 
 # publish tagged releases
