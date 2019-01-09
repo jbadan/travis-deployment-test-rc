@@ -1,6 +1,9 @@
 #! /bin/bash
 
 echo "travis event type: $TRAVIS_EVENT_TYPE"
+
+echo $(git ls-remote origin | grep "$TRAVIS_COMMIT\s\+refs/heads/release$")
+
 # publish tagged releases
 if [[ "$TRAVIS_BRANCH" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
     npm publish
