@@ -1,15 +1,10 @@
 #! /bin/bash
 
-echo "travis event type: $TRAVIS_EVENT_TYPE"
-
-echo "travis commit $TRAVIS_COMMIT"
-
 echo "TRAVIS_COMMIT_MESSAGE $TRAVIS_COMMIT_MESSAGE"
 
-echo $(git ls-remote origin | grep "$TRAVIS_COMMIT\s\+refs/heads/release$")
 
 # publish tagged releases
-if [[ "$TRAVIS_BRANCH" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+if [[ "$TRAVIS_COMMIT_MESSAGE" =~ .*[0-9]+\.[0-9]+\.[0-9]+$.* ]]; then
     npm publish
      exit 1
 # bump rc and publish
