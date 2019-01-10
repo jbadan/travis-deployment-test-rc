@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.12-rc.5"></a>
+## [0.1.12-rc.5](https://github.com/jbadan/travis-deployment-test-rc/compare/v0.1.12-rc.4...v0.1.12-rc.5) (2019-01-10)
+
+
+### Bug Fixes
+
+* testing after protecting master branch with merge conditions ([ea15a17](https://github.com/jbadan/travis-deployment-test-rc/commit/ea15a17))
+
+
+
 <a name="0.1.12-rc.4"></a>
 ## [0.1.12-rc.4](https://github.com/jbadan/travis-deployment-test-rc/compare/v0.1.12-rc.3...v0.1.12-rc.4) (2019-01-10)
 
