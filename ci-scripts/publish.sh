@@ -5,8 +5,8 @@ if [[ "$TRAVIS_COMMIT_MESSAGE" =~ chore\(release\):\sversion\s[0-9]+\.[0-9]+\.[0
     npm publish
 # bump rc and publish
 else
-    git config --global user.email "travis@travis.org"
-    git config --global user.name "travis"
+    git config --global user.email "fundamental@sap.com"
+    git config --global user.name "fundamental-bot"
 
     git checkout master
     # update the package verion and commit to the git repository
