@@ -46,6 +46,5 @@ pull_request() {
 
 set -o errexit
 
-git checkout -b chore/create-release
 git commit --allow-empty -m "chore(release): create new release via script"
 pull_request
