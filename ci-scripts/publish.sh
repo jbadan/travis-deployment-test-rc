@@ -2,9 +2,8 @@
 
 # publish tagged releases
 echo "TRAVIS_COMMIT_MESSAGE $TRAVIS_COMMIT_MESSAGE"
-echo "$TRAVIS_COMMIT_MESSAGE" =~ chore\(release\):\sversion\s[0-9]+\.[0-9]+\.[0-9]+$.*
 
-if [[ "$TRAVIS_COMMIT_MESSAGE" =~ chore\(release\):\sversion\s[0-9]+\.[0-9]+\.[0-9]+$.* ]]; then
+if [[ "$TRAVIS_COMMIT_MESSAGE" =~ chore\(release\):[[:space:]]version[[:space:]][0-9]+\.[0-9]+\.[0-9]+$.* ]]; then
     echo "inside if statement"
     npm publish
 else
