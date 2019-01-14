@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.12-rc.9"></a>
+## [0.1.12-rc.9](https://github.com/jbadan/travis-deployment-test-rc/compare/v0.1.12-rc.8...v0.1.12-rc.9) (2019-01-14)
+
+
+### Bug Fixes
+
+* add node version back ([c16b190](https://github.com/jbadan/travis-deployment-test-rc/commit/c16b190))
+* remove node version ([9d506b9](https://github.com/jbadan/travis-deployment-test-rc/commit/9d506b9))
+
+
+
 <a name="0.1.12-rc.8"></a>
 ## [0.1.12-rc.8](https://github.com/jbadan/travis-deployment-test-rc/compare/v0.1.12-rc.5...v0.1.12-rc.8) (2019-01-14)
 
