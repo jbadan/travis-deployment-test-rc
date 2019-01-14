@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.12-rc.8"></a>
+## [0.1.12-rc.8](https://github.com/jbadan/travis-deployment-test-rc/compare/v0.1.12-rc.5...v0.1.12-rc.8) (2019-01-14)
+
+
+### Bug Fixes
+
+* add new push restrictions ([6b6fda6](https://github.com/jbadan/travis-deployment-test-rc/commit/6b6fda6))
+* manually bump ([4e2e8f0](https://github.com/jbadan/travis-deployment-test-rc/commit/4e2e8f0))
+* wwfweff ([eb4637e](https://github.com/jbadan/travis-deployment-test-rc/commit/eb4637e))
+
+
+
 <a name="0.1.12-rc.5"></a>
 ## [0.1.12-rc.5](https://github.com/jbadan/travis-deployment-test-rc/compare/v0.1.12-rc.4...v0.1.12-rc.5) (2019-01-10)
 
