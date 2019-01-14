@@ -1,7 +1,9 @@
 #! /bin/bash
 
 # publish tagged releases
-if [[ "$TRAVIS_COMMIT_MESSAGE" =~ chore\(release\):\sversion\s[0-9]+\.[0-9]+\.[0-9]+$.* ]]; then
+if [[ "$TRAVIS_COMMIT_MESSAGE" =~ chore\(release\):\screate\snew\srelease\svia\sscript ]]; then
+    npm run std-version
+    git push --follow-tags "https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG" "$TRAVIS_BRANCH" > /dev/null 2>&1;
     npm publish
 # bump rc and publish
 else
