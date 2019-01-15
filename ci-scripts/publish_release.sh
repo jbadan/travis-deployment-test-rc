@@ -32,8 +32,8 @@ set -o errexit
 # git checkout master
 # git branch -D chore/create-release
 
-githubEmail = git config --get user.email
-githubName = git config --get user.name
+githubEmail=`git config --get user.email`
+githubName=`git config --get user.name`
 
 git config --global user.email "fundamental@sap.com"
 git config --global user.name "fundamental-bot"
