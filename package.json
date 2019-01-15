@@ -8,7 +8,7 @@
     "test:coverage": "echo \"This could be a test huh\"",
     "lint": "echo \"This could be a lint huh\"",
     "release": "./ci-scripts/publish_release.sh",
-    "std-version:release": "standard-version -m \"chore(release): version %s\"",
+    "std-version:release": "standard-version --author=\"fundamental-bot <fundamental@sap.com>\" -m \"chore(release): version %s\"",
     "std-version": "standard-version -m \"chore(release): version %s build ${TRAVIS_BUILD_NUMBER} [ci skip]\""
   },
   "repository": {
