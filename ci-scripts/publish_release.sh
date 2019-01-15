@@ -32,8 +32,6 @@ set -o errexit
 # git checkout master
 # git branch -D chore/create-release
 
-git config --global user.email "fundamental@sap.com"
-git config --global user.name "fundamental-bot"
 
 npm run std-version:release
-git push --follow-tags origin
+git push --author="fundamental-bot <fundamental@sap.com>" --follow-tags origin
