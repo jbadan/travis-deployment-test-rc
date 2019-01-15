@@ -34,4 +34,4 @@ set -o errexit
 
 
 npm run std-version:release
-git push --author="fundamental-bot <fundamental@sap.com>" --follow-tags origin
+git push --follow-tags origin
