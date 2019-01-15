@@ -1,6 +1,6 @@
 {
   "name": "travis-deployment-test-rc",
-  "version": "0.1.18-rc.0",
+  "version": "0.1.18",
   "description": "This library is strictly to test deployment/releases using TravisCI.",
   "main": "index.js",
   "scripts": {
