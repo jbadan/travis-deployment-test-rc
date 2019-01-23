@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.20-rc.0"></a>
+## [0.1.20-rc.0](https://github.com/jbadan/travis-deployment-test-rc/compare/v0.1.19...v0.1.20-rc.0) (2019-01-23)
+
+
+
 <a name="0.1.19"></a>
 ## [0.1.19](https://github.com/jbadan/travis-deployment-test-rc/compare/v0.1.19-rc.1...v0.1.19) (2019-01-15)
 
