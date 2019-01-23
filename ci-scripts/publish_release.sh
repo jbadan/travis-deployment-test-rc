@@ -25,24 +25,7 @@ hash_upstream=$(git rev-parse $git_branch@{upstream})
 
 set -o errexit
 
-# git checkout -b chore/create-release
-# git commit --allow-empty -m "chore(release): create new release via script"
-# git push --set-upstream origin chore/create-release
-# xdg-open https://github.com/jbadan/travis-deployment-test-rc/compare/master...chore/create-release
-# git checkout master
-# git branch -D chore/create-release
-
-githubEmail=`git config --get user.email`
-githubName=`git config --get user.name`
-
-git config --global user.email "fundamental@sap.com"
-git config --global user.name "fundamental-bot"
-
-npm run std-version:release
-git push --follow-tags origin
-
-git config --global user.email "$githubEmail"
-git config --global user.name "$githubName"
-
-git config --get user.email
-git config --get user.name
+git checkout -b automated_master_release
+git commit --allow-empty -m "chore(release): create new release via script"
+git push --delete --set-upstream origin automated_master_release
+git branch -d automated_master_release
