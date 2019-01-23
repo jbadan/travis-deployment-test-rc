@@ -6,7 +6,7 @@ git config --global user.email "fundamental@sap.com"
 git config --global user.name "fundamental-bot"
 
 git checkout master
-
+npm install
 
 if [[ "$TRAVIS_BRANCH" = "automated_master_release" ]]; then
     echo "inside if statement"
