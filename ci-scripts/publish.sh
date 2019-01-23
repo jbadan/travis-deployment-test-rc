@@ -14,6 +14,9 @@ if [[ "$TRAVIS_BRANCH" = "automated_master_release" ]]; then
     git push --follow-tags "https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG" master > /dev/null 2>&1;
   
     npm publish
+
+    # delete automated_master_release branch
+    git push "https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG" :automated_master_release > /dev/null 2>&1;
 # bump and publish rc
 else
     echo "inside else statement"
