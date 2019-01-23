@@ -11,7 +11,8 @@ jobs:
   - stage: Lint and unit tests
     script: npm run lint && npm run test:coverage
   - stage: Deploy
-    if: [ branch = master AND type != pull_request ] OR branch = automated_master_release
+    if: branch = master OR branch = automated_master_release
+    condition: type != pull_request
     before_deploy:
     - bash ./ci-scripts/setup_npm.sh
     deploy:
