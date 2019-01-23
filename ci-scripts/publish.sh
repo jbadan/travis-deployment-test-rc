@@ -10,7 +10,7 @@ npm install
 
 if [[ "$TRAVIS_BRANCH" = "automated_master_release" ]]; then
     echo "inside if statement"
-    npm run std-version:release
+    npm run std-version
     git push --follow-tags "https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG" master > /dev/null 2>&1;
   
     npm publish
