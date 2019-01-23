@@ -11,7 +11,7 @@ jobs:
   - stage: Lint and unit tests
     script: npm run lint && npm run test:coverage
   - stage: Deploy
-    if: ($TRAVIS_BRANCH = master OR $TRAVIS_BRANCH = automated_master_release) AND type = push
+    if: (branch = master OR branch = automated_master_release) AND type = push
     before_deploy:
     - bash ./ci-scripts/setup_npm.sh
     deploy:
