@@ -28,4 +28,7 @@ set -o errexit
 git checkout -b automated_master_release
 git commit --allow-empty -m "chore(release): create new release via script"
 git push --set-upstream origin automated_master_release
-git branch -d automated_master_release
+git checkout master
+# delete branch on local and remote
+git push origin :automated_master_release
+git branch -D automated_master_release
