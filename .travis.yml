@@ -19,11 +19,7 @@ jobs:
     - provider: script
       script: bash ./ci-scripts/publish.sh $TRAVIS_BRANCH $TRAVIS_BUILD_NUMBER
       on:
-        branch: automated_master_release
-    - provider: script
-      script: bash ./ci-scripts/publish.sh $TRAVIS_BRANCH $TRAVIS_BUILD_NUMBER
-      on:
-        branch: master
+        all_branches: true
 notifications:
   email:
     on_failure: always
