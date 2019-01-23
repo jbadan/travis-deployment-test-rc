@@ -12,13 +12,17 @@ jobs:
     if: branch != automated_master_release
     script: npm run lint && npm run test:coverage
   - stage: Deploy
-    if: branch = automated_master_release AND type = push
+    if: (branch = master OR branch = automated_master_release) AND type = push
     before_deploy:
     - bash ./ci-scripts/setup_npm.sh
     deploy:
       - provider: script
         script: bash ./ci-scripts/publish.sh $TRAVIS_BRANCH $TRAVIS_BUILD_NUMBER
         skip_cleanup: true
+        on:
+          branches:
+            - master
+            - automated_master_release
 notifications:
   email:
     on_failure: always
