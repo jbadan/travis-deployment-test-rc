@@ -8,17 +8,19 @@ git config --global user.name "fundamental-bot"
 git checkout master
 npm install
 
-if [[ "$TRAVIS_BRANCH" = "automated_master_release" ]]; then
+if [[ "$TRAVIS_BRANCH" = "tmp_branch_for_automated_release_do_not_use" ]]; then
     echo "inside if statement"
+    # delete tmp_branch_for_automated_release_do_not_use branch
+    git push "https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG" :tmp_branch_for_automated_release_do_not_use > /dev/null 2>&1;
+
     npm run std-version
+
     git push --follow-tags "https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG" master > /dev/null 2>&1;
   
     npm publish
 
-    # delete automated_master_release branch
-    git push "https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG" :automated_master_release > /dev/null 2>&1;
-# bump and publish rc
 else
+    # bump and publish rc
     echo "inside else statement"
 
     # update the package verion and commit to the git repository

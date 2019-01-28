@@ -25,9 +25,12 @@ hash_upstream=$(git rev-parse $git_branch@{upstream})
 
 set -o errexit
 
-git checkout -b automated_master_release
+git checkout -b tmp_branch_for_automated_release_do_not_use
 git commit --allow-empty -m "chore(release): create new release via script"
-git push --set-upstream origin automated_master_release
+
+# push new branch to trigger travis build
+git push --set-upstream origin tmp_branch_for_automated_release_do_not_use
+
+# delete branch on local machine
 git checkout master
-# delete branch on local
-git branch -D automated_master_release
+git branch -D tmp_branch_for_automated_release_do_not_use
