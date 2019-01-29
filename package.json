@@ -3,11 +3,15 @@
   "version": "0.1.23-rc.1",
   "description": "This library is strictly to test deployment/releases using TravisCI.",
   "main": "index.js",
+  "bin": {
+    "create-release": "ci-scripts/create-release.js"
+  },
   "scripts": {
     "build": "echo \"This could be a build huh\"",
     "test:coverage": "echo \"This could be a test huh\"",
     "lint": "echo \"This could be a lint huh\"",
     "release": "./ci-scripts/publish_release.sh",
+    "release:create": "./ci-scripts/create-release.js",
     "std-version": "standard-version -m \"chore(release): version %s build ${TRAVIS_BUILD_NUMBER} [ci skip]\""
   },
   "repository": {
@@ -21,6 +25,8 @@
   },
   "homepage": "https://github.com/jbadan/travis-deployment-test-rc#readme",
   "devDependencies": {
-    "standard-version": "^4.4.0"
+    "github-api": "^3.0.0",
+    "standard-version": "^4.4.0",
+    "yargs": "^12.0.5"
   }
 }

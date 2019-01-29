@@ -13,10 +13,15 @@ if [[ "$TRAVIS_BRANCH" = "tmp_branch_for_automated_release_do_not_use" ]]; then
     # delete tmp_branch_for_automated_release_do_not_use branch
     git push "https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG" :tmp_branch_for_automated_release_do_not_use > /dev/null 2>&1;
 
-    npm run std-version
+    std_ver=$(npm run std-version)
+    release_tag=$(echo "$std_ver" | grep "tagging release" | awk '{print $4}')
+
+    echo "$std_ver"
 
     git push --follow-tags "https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG" master > /dev/null 2>&1;
   
+    npm run release:create -- --tag $release_tag
+
     npm publish
 
 else
