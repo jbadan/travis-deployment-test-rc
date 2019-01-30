@@ -10,6 +10,11 @@ var argv = require('yargs')
         description: 'Version tag to use for the release',
         type: 'string'
     })
+    .option('debug', {
+        alias: 'd',
+        description: 'Turn on console messages',
+        type: 'boolean'
+    })
     .demandOption(['tag'], 'Please provide the version tag to create this release')
     .alias('help', 'h')
     .version(false)
@@ -26,8 +31,11 @@ var repoSlug = process.env.TRAVIS_REPO_SLUG.split('/');
 
 var ghRepo = gh.getRepo(repoSlug[0], repoSlug[1]);
 
-releaseNotes(ghRepo)
+releaseNotes(ghRepo, argv.debug)
     .then(notes => {
+        if (argv.debug) {
+            console.log('\nRelease Notes:\n', notes);
+        }
         ghRepo.createRelease({
             'tag_name': argv.tag,
             'target_commitish': 'master',

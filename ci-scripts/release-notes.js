@@ -1,6 +1,12 @@
+var isDebug = false;
+
 const buildCommitMessage = (commit, pullRequests, breaking) => {
-    var template = (msg, sha, url, prNumber, prUrl) =>
-        `${msg}${prNumber ? ` ([#${prNumber}](${prUrl}))` : ''} ([${sha}](${url}))`;
+    var template = (msg, sha, url, prNumber, prUrl) => {
+        if (isDebug) {
+            console.log('\nTemplate:\n', msg, sha, url, prNumber, prUrl);
+        }
+        return `${msg}${prNumber ? ` ([#${prNumber}](${prUrl}))` : ''} ([${sha}](${url}))`;
+    }
 
     var message = commit.message;
     var delimiter = (breaking ? 'BREAKING CHANGE:' : ':');
@@ -44,6 +50,9 @@ const buildMessages = (commits, pullRequests) => {
         }
     });
 
+    if (isDebug) {
+        console.log('\nMessages:\n', messages);
+    }
     return messages;
 };
 
@@ -115,20 +124,32 @@ const getPullRequest = (ghRepo, prNumber) =>
             console.error(e);
         });
 
-module.exports = (ghRepo) =>
-    getCommits(ghRepo)
+module.exports = (ghRepo, debug) => {
+    isDebug = debug;
+
+    return getCommits(ghRepo)
         .then(commits => {
+            if (isDebug) {
+                console.log('\nCommits:\n', commits);
+            }
             return Promise.all(commits.filter(commit => !!commit.prNumber).map(commit =>
                 getPullRequest(ghRepo, commit.prNumber)
             ))
             .then(pullRequests => {
+                if (isDebug) {
+                    console.log('\nPull Requests:\n', pullRequests);
+                }
                 pullRequestLookup = {};
                 pullRequests.forEach(pullRequest => {
                     Object.assign(pullRequestLookup, pullRequest);
-                })
+                });
+                if (isDebug) {
+                    console.log('\nPull Request Object:\n', pullRequestLookup);
+                }
                 return buildReleaseNotes(buildMessages(commits, pullRequestLookup));
-            })
+            });
         })
         .catch(e => {
             console.error(e);
         });
+};

@@ -20,7 +20,7 @@ if [[ "$TRAVIS_BRANCH" = "tmp_branch_for_automated_release_do_not_use" ]]; then
 
     git push --follow-tags "https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG" master > /dev/null 2>&1;
   
-    npm run release:create -- --tag $release_tag
+    npm run release:create -- --tag $release_tag --debug
 
     npm publish
 
