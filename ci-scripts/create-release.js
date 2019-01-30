@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-var GitHub = require('github-api');
-var releaseNotes = require('./release-notes');
+const GitHub = require('github-api');
+const releaseNotes = require('./release-notes');
 
-var argv = require('yargs')
+const argv = require('yargs')
     .usage('Usage: $0 [options]')
     .option('tag', {
         alias: 't',
@@ -21,15 +21,15 @@ var argv = require('yargs')
     .help()
     .argv;
 
-var gh = new GitHub({
+const gh = new GitHub({
     token: process.env.GH_TOKEN
 });
 
 // even though we have the repo slug (owner_name/repo_name),
 // the GitHub API requires them as separate parameters
-var repoSlug = process.env.TRAVIS_REPO_SLUG.split('/');
+const repoSlug = process.env.TRAVIS_REPO_SLUG.split('/');
 
-var ghRepo = gh.getRepo(repoSlug[0], repoSlug[1]);
+const ghRepo = gh.getRepo(repoSlug[0], repoSlug[1]);
 
 releaseNotes(ghRepo, argv)
     .then(notes => {

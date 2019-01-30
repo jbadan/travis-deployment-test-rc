@@ -1,46 +1,43 @@
-var isDebug = false;
+let isDebug = false;
 
-const buildCommitMessage = (commit, pullRequests, breaking) => {
-    var template = (msg, sha, url, prNumber, prUrl) => {
-        if (isDebug) {
-            console.log('\nTemplate:\n', msg, sha, url, prNumber, prUrl);
-        }
+const debug = (label, ...args) => {
+    if (isDebug) {
+        console.log(`\n${label}:\n`, ...args);
+    }
+}
+
+const buildCommitMessage = (commit, pullRequests) => {
+    const template = (msg, sha, url, prNumber, prUrl) => {
+        debug('Template', msg, sha, url, prNumber, prUrl);
         return `${msg}${prNumber ? ` ([#${prNumber}](${prUrl}))` : ''} ([${sha}](${url}))`;
     }
 
-    var message = commit.message;
-    var delimiter = (breaking ? 'BREAKING CHANGE:' : ':');
-    var pos = message.indexOf(delimiter);
+    let message = commit.message;
+    debug('Raw Message', message);
+    let pos = message.indexOf(':');
     if (pos !== -1) {
-        message = message.substring(pos + delimiter.length).trim();
+        message = message.substring(pos + 1).trim();
     }
 
-    // if it's not a breaking commit message, let's trim off anything after the new lines
-    // or the (#00) PR number, if there is one
-    if (!breaking) {
-        pos = message.indexOf(commit.prNumber ? '(#' : '\n\n');
-        if (pos !== -1) {
-            message = message.substring(0, pos).trim();
-        }
-
-        return template(message, commit.sha.substring(0, 7), commit.url, commit.prNumber, pullRequests[`pr_${commit.prNumber}`]);
+    if (message.match(/BREAKING CHANGE\:/)) {
+        message = `**BREAKING CHANGE:** ${message}`;
     }
 
-    return template(message, commit.sha.substring(0, 7), commit.url);
+    pos = message.indexOf(commit.prNumber ? '(#' : '\n\n');
+    if (pos !== -1) {
+        message = message.substring(0, pos).trim();
+    }
+
+    return template(message, commit.sha.substring(0, 7), commit.url, commit.prNumber, pullRequests[`pr_${commit.prNumber}`]);
 };
 
 const buildMessages = (commits, pullRequests) => {
-    var messages = {
-        breaking: [],
+    let messages = {
         features: [],
         fixes: []
     };
 
     commits.forEach(commit => {
-        if (commit.message.match(/BREAKING CHANGE\:/)) {
-            messages.breaking.push(buildCommitMessage(commit, pullRequests, true));
-        }
-
         if (commit.message.match(/^fix/)) {
             messages.fixes.push(buildCommitMessage(commit, pullRequests));
         }
@@ -50,19 +47,12 @@ const buildMessages = (commits, pullRequests) => {
         }
     });
 
-    if (isDebug) {
-        console.log('\nMessages:\n', messages);
-    }
+    debug('Messages', messages);
     return messages;
 };
 
 const buildReleaseNotes = (messages) => {
-    var notes = [];
-
-    if (messages.breaking.length > 0) {
-        notes.push('\n### BREAKING CHANGES\n');
-        notes = notes.concat(messages.breaking.map(msg => `* ${msg}`));
-    }
+    let notes = [];
 
     if (messages.features.length > 0) {
         notes.push('\n### Features\n');
@@ -78,20 +68,21 @@ const buildReleaseNotes = (messages) => {
 };
 
 const doesVersionMatchTag = (message, tag) => {
-    var regex = /[0-9]+\.[0-9]+\.[0-9]+/;
-    var messageMatch = message.match(regex);
-    var tagMatch = tag.match(regex);
+    const regex = /[0-9]+\.[0-9]+\.[0-9]+/;
+    const messageMatch = message.match(regex);
+    const tagMatch = tag.match(regex);
     return messageMatch && tagMatch && messageMatch[0] === tagMatch[0];
 };
 
 const getCommits = (ghRepo, tag) =>
     ghRepo.listCommits()
         .then(resp => {
-            var commits = (!Array.isArray(resp.data) ? [resp.data] : resp.data);
-            var filteredCommits = [];
+            const commits = (!Array.isArray(resp.data) ? [resp.data] : resp.data);
+            let filteredCommits = [];
 
-            for (var i = 0; i < commits.length; i++) {
-                var message = commits[i].commit.message;
+            for (let i = 0; i < commits.length; i++) {
+                const message = commits[i].commit.message;
+                debug('Raw Commit Message', message);
 
                 // continue until the first non-rc version is found
                 if (message.match(/^chore\(release\):\sversion\s[0-9]+\.[0-9]+\.[0-9]+\s/)) {
@@ -106,7 +97,7 @@ const getCommits = (ghRepo, tag) =>
                     continue;
                 }
 
-                var prMatch = message.match(/\(\#\d+\)/);
+                let prMatch = message.match(/\(\#\d+\)/);
                 if (prMatch) {
                     prMatch = prMatch[0].match(/\d+/);
                 }
@@ -114,7 +105,7 @@ const getCommits = (ghRepo, tag) =>
                 filteredCommits.push({
                     sha: commits[i].sha,
                     url: commits[i].html_url,
-                    message: commits[i].commit.message,
+                    message: message,
                     prNumber: (prMatch ? parseInt(prMatch[0], 10) : null)
                 });
             }
@@ -139,23 +130,18 @@ module.exports = (ghRepo, argv) => {
 
     return getCommits(ghRepo, argv.tag)
         .then(commits => {
-            if (isDebug) {
-                console.log('\nCommits:\n', commits);
-            }
+            debug('Commits', commits);
             return Promise.all(commits.filter(commit => !!commit.prNumber).map(commit =>
                 getPullRequest(ghRepo, commit.prNumber)
             ))
             .then(pullRequests => {
-                if (isDebug) {
-                    console.log('\nPull Requests:\n', pullRequests);
-                }
+                debug('Pull Requests', pullRequests);
                 pullRequestLookup = {};
                 pullRequests.forEach(pullRequest => {
                     Object.assign(pullRequestLookup, pullRequest);
                 });
-                if (isDebug) {
-                    console.log('\nPull Request Object:\n', pullRequestLookup);
-                }
+
+                debug('Pull Request Object', pullRequestLookup);
                 return buildReleaseNotes(buildMessages(commits, pullRequestLookup));
             });
         })
