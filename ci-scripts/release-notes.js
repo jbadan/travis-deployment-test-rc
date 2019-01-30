@@ -77,7 +77,14 @@ const buildReleaseNotes = (messages) => {
     return notes.join('\n');
 };
 
-const getCommits = (ghRepo) =>
+const doesVersionMatchTag = (message, tag) => {
+    var regex = /[0-9]+\.[0-9]+\.[0-9]+/;
+    var messageMatch = message.match(regex);
+    var tagMatch = tag.match(regex);
+    return messageMatch && tagMatch && messageMatch[0] === tagMatch[0];
+};
+
+const getCommits = (ghRepo, tag) =>
     ghRepo.listCommits()
         .then(resp => {
             var commits = (!Array.isArray(resp.data) ? [resp.data] : resp.data);
@@ -88,7 +95,10 @@ const getCommits = (ghRepo) =>
 
                 // continue until the first non-rc version is found
                 if (message.match(/^chore\(release\):\sversion\s[0-9]+\.[0-9]+\.[0-9]+\s/)) {
-                    break;
+                    // unless that match matches the tag just created
+                    if (!doesVersionMatchTag(message, tag)) {
+                        break;
+                    }
                 }
 
                 // skip over system-generated commits
@@ -124,10 +134,10 @@ const getPullRequest = (ghRepo, prNumber) =>
             console.error(e);
         });
 
-module.exports = (ghRepo, debug) => {
-    isDebug = debug;
+module.exports = (ghRepo, argv) => {
+    isDebug = argv.debug;
 
-    return getCommits(ghRepo)
+    return getCommits(ghRepo, argv.tag)
         .then(commits => {
             if (isDebug) {
                 console.log('\nCommits:\n', commits);

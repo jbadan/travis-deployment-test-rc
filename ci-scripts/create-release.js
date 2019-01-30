@@ -31,7 +31,7 @@ var repoSlug = process.env.TRAVIS_REPO_SLUG.split('/');
 
 var ghRepo = gh.getRepo(repoSlug[0], repoSlug[1]);
 
-releaseNotes(ghRepo, argv.debug)
+releaseNotes(ghRepo, argv)
     .then(notes => {
         if (argv.debug) {
             console.log('\nRelease Notes:\n', notes);
