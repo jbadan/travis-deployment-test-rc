@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.3-rc.0"></a>
+## [1.0.3-rc.0](https://github.com/jbadan/travis-deployment-test-rc/compare/v1.0.2...v1.0.3-rc.0) (2019-01-30)
+
+
+### Bug Fixes
+
+* Changed the way breaking changes are included in the notes ([#24](https://github.com/jbadan/travis-deployment-test-rc/issues/24)) ([be0d425](https://github.com/jbadan/travis-deployment-test-rc/commit/be0d425))
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/jbadan/travis-deployment-test-rc/compare/v1.0.2-rc.0...v1.0.2) (2019-01-30)
 
