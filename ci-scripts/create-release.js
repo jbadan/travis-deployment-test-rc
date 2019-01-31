@@ -10,6 +10,11 @@ const argv = require('yargs')
         description: 'Version tag to use for the release',
         type: 'string'
     })
+    .option('prerelease', {
+        alias: 'p',
+        description: 'Mark as a pre-release',
+        type: 'boolean'
+    })
     .option('debug', {
         alias: 'd',
         description: 'Turn on console messages',
@@ -40,7 +45,8 @@ releaseNotes(ghRepo, argv)
             'tag_name': argv.tag,
             'target_commitish': 'master',
             'name': `Release ${argv.tag}`,
-            'body': notes
+            'body': notes,
+            'prerelease': argv.prerelease
         })
         .then(resp => {
             console.log('\nCreated release', resp.data.id, resp.data.name, '\n\n');
