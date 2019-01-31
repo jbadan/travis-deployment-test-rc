@@ -10,7 +10,7 @@
     "build": "echo \"This could be a build huh\"",
     "test:coverage": "echo \"This could be a test huh\"",
     "lint": "echo \"This could be a lint huh\"",
-    "release": "./ci-scripts/publish_release.sh",
+    "release": "./scripts/publish_release.sh",
     "release:create": "./ci-scripts/create-release.js",
     "std-version": "standard-version -m \"chore(release): version %s build ${TRAVIS_BUILD_NUMBER} [ci skip]\""
   },
