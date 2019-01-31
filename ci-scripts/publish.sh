@@ -29,16 +29,11 @@ else
     echo "inside else statement"
 
     # update the package verion and commit to the git repository
-    std_ver=$(npm run std-version -- --prerelease rc --no-verify)
-    release_tag=$(echo "$std_ver" | grep "tagging release" | awk '{print $4}')
-
-    echo "$std_ver"
+    npm run std-version -- --prerelease rc --no-verify
 
     # pushes changes to master
     git status
     git push --follow-tags "https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG" "$TRAVIS_BRANCH" > /dev/null 2>&1;
-
-    npm run release:create -- --tag $release_tag --prerelease --debug
 
     npm publish --tag prerelease
 fi
