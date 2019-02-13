@@ -37,5 +37,5 @@ else
 
     npm publish --tag prerelease
 
-    npm run deploy
+    npm run deploy -- --repo "https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG"
 fi
