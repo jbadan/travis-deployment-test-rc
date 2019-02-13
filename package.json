@@ -8,6 +8,7 @@
   },
   "scripts": {
     "build": "echo \"This could be a build huh\"",
+    "deploy": "gh-pages -d build",
     "test:coverage": "echo \"This could be a test huh\"",
     "lint": "echo \"This could be a lint huh\"",
     "release": "./scripts/publish_release.sh",
@@ -25,6 +26,7 @@
   },
   "homepage": "https://github.com/jbadan/travis-deployment-test-rc#readme",
   "devDependencies": {
+    "gh-pages": "^2.0.1",
     "github-api": "^3.0.0",
     "standard-version": "^4.4.0",
     "yargs": "^12.0.5"

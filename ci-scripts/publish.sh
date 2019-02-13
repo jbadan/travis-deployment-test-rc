@@ -36,4 +36,6 @@ else
     git push --follow-tags "https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG" "$TRAVIS_BRANCH" > /dev/null 2>&1;
 
     npm publish --tag prerelease
+
+    npm run deploy
 fi
