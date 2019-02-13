@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "echo \"This could be a build huh\"",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d build -r \"https://\" + ${GH_TOKEN} + \"@github.com/${TRAVIS_REPO_SLUG}\"",
     "test:coverage": "echo \"This could be a test huh\"",
     "lint": "echo \"This could be a lint huh\"",
     "release": "./scripts/publish_release.sh",
